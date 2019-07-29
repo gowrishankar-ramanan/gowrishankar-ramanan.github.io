@@ -16,7 +16,7 @@
 	opacity: 0;
 	position: absolute;
 	text-align: center;
-	width: 350px; height: 125px;
+	width: 420px; height: 125px;
 	background: lightblue;
 	border: 0px;
 	}
@@ -72,11 +72,12 @@ d3.select("svg")
   })
   .on("click", function(d,i) {
 		d3.select(this).style("fill", "red");
+		var url = "http://www."+d.Make.valueOf().replace(/\s+/g, '')+".com";
 		drilldown.style("opacity", 1)
 				.style("left","600px")
 				.style("top",(d3.event.pageY)+"px")
-				.html("<b>You just selected a(n) "+d.Make+" car! </b><br/>Please click on the link below to explore more on this car!<br/><b>EngineCylinder</b>: "+d.EngineCylinders+"<br/><b>Avg.City MPG</b>: "+d.AverageCityMPG+
-				"<br/><b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"<br/><b>Fuel</b>: "+d.Fuel+"<br/><b>URL</b>: ");
+				.html("<b>You just selected a(n) "+d.Make+" car!</b><br/>Please click on the link below to explore more about this car!<br/><b>EngineCylinder</b>: "+d.EngineCylinders+"<br/><b>Avg.City MPG</b>: "+d.AverageCityMPG+
+				"<br/><b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"<br/><b>Fuel</b>: "+d.Fuel+"<br/><b>URL</b>: <a href="+url+">"+url+"</a>");
   })
   .transition().duration(3000).delay(1000)
   .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
