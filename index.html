@@ -12,6 +12,14 @@
 	background: white;
 	border: 0px;
 	}
+#drilldown {
+	opacity: 0;
+	position: absolute;
+	text-align: center;
+	width: 250px; height: 60px;
+	background: lightblue;
+	border: 0px;
+	}
 circle {fill: lightblue; stroke: black;}
 </style>
 </head>
@@ -20,11 +28,13 @@ circle {fill: lightblue; stroke: black;}
 <h1>Fuel Economy of Cars in 2017</h1>
 <p><b><i>How does the fuel economy change with the number of engine cylinders and the type of fuel used?</i></b></p>
 <ul></ul>
-<svg width="500" height="500">
+<svg width="800" height="500">
 
 </svg>
 
 <div id="tooltip"></div>
+
+<div id="drilldown"></div>
 
 <script>
 async function init() {
@@ -58,6 +68,14 @@ d3.select("svg")
 		else if (d.Fuel.valueOf()=="Electricity") {
 			d3.select(this).style("fill", "lightblue");
 		}
+  })
+  .on("click", function(d,i) {
+		d3.select(this).style("fill", "red");
+		tooltip.style("opacity", 1)
+				.style("left","600px")
+				.style("top",(d3.event.pageY)+"px")
+				.html("<b>You just selected a(n) "+d.Make+" car! \nPlease click on the link below to explore more on this car!\n <b>EngineCylinder</b>: "+d.EngineCylinders+"\n <b>Avg.City MPG</b>: "+d.AverageCityMPG+
+				"\n <b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"\n <b>Fuel</b>: "+d.Fuel+"\n <b>URL</b>: ");
   })
   .transition().duration(3000).delay(1000)
   .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
