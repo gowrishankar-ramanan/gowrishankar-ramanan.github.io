@@ -123,6 +123,13 @@ d3.select("svg")
       .attr("transform", "rotate(-90)")
       .style("text-anchor", "middle")
       .text("AverageHighwayMPG");    
+	  
+d3.select("svg")
+  .append("g")
+  .attr("class","legend")
+  .attr("transform", "translate(500,50)")
+  .style("font-size","12px")
+  .call(d3.legend);
 }
 </script>
 
