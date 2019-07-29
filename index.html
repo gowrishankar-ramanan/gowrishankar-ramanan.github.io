@@ -39,19 +39,6 @@ d3.select("svg")
   .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
   .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
   .attr("r", function(d,i) {return 1;})
-  .transition()
-  .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
-  .style("fill", function(d) {
-		if(d.Fuel.valueOf()=="Gasoline") {
-			return "green";
-		}
-		else if (d.Fuel.valueOf()=="Diesel") {
-			return "orange";
-		}
-		else if (d.Fuel.valueOf()=="Electricity") {
-			return "lightblue";
-		}
-  })
   .on("mouseover", function(d,i) {
 		d3.select(this).style("fill", "red");
 		tooltip.style("opacity", 1)
@@ -71,7 +58,21 @@ d3.select("svg")
 		else if (d.Fuel.valueOf()=="Electricity") {
 			d3.select(this).style("fill", "lightblue");
 		}
+  })
+  .transition()
+  .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
+  .style("fill", function(d) {
+		if(d.Fuel.valueOf()=="Gasoline") {
+			return "green";
+		}
+		else if (d.Fuel.valueOf()=="Diesel") {
+			return "orange";
+		}
+		else if (d.Fuel.valueOf()=="Electricity") {
+			return "lightblue";
+		}
   });
+
 d3.select("svg")
   .append("g")
   .attr("transform", "translate(50,50)")
