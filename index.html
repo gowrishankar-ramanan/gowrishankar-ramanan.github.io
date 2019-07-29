@@ -39,7 +39,7 @@ d3.select("svg")
   .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
   .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
   .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
-  .attr("fill", function(d) {
+  .style("fill", function(d) {
 		if(d.Fuel.valueOf()=="Gasoline") {
 			return "green";
 		}
@@ -49,13 +49,13 @@ d3.select("svg")
 		tooltip.style("opacity", 1)
 				.style("left",(d3.event.pageX)+"px")
 				.style("top",(d3.event.pageY)+"px")
-				.html("Item# "+i+": \n EngineCylinder: "+d.EngineCylinders+"\n Avg.City MPG: "+d.AverageCityMPG+
-				"\n Avg.Hwy MPG: "+d.AverageHighwayMPG+"\n Fuel: "+d.Fuel);
-   })
-   .on("mouseout", function() {
+				.html("<b>Item#</b> "+i+": \n <b>EngineCylinder</b>: "+d.EngineCylinders+"\n <b>Avg.City MPG</b>: "+d.AverageCityMPG+
+				"\n <b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"\n <b>Fuel</b>: "+d.Fuel);
+  })
+  .on("mouseout", function() {
 		tooltip.style("opacity", 0);
 		d3.select(this).style("fill", "lightblue");
-   });
+  });
 d3.select("svg")
   .append("g")
   .attr("transform", "translate(50,50)")
@@ -71,20 +71,18 @@ d3.select("svg")
 
   // text label for the x axis
   d3.select("svg")
-      .append("text")             
-      .attr("transform",
-            "translate(" + (width/2) + " ," + 
-                           (height + margin.top + 20) + ")")
+      .append("g")          
+      .attr("transform", "translate(250,420)")
+      .append("text")
       .style("text-anchor", "middle")
       .text("AverageCityMPG");
 	  
   // text label for the y axis
   d3.select("svg")
+      .append("g")          
+      .attr("transform", "translate(30,250)")
       .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 0 - margin.left)
-      .attr("x",0 - (height / 2))
-      .attr("dy", "1em")
       .style("text-anchor", "middle")
       .text("AverageHighwayMPG");    
 }
