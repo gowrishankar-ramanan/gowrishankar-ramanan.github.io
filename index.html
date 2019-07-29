@@ -16,7 +16,7 @@
 	opacity: 0;
 	position: absolute;
 	text-align: center;
-	width: 250px; height: 80px;
+	width: 350px; height: 125px;
 	background: lightblue;
 	border: 0px;
 	}
@@ -75,7 +75,7 @@ d3.select("svg")
 		drilldown.style("opacity", 1)
 				.style("left","600px")
 				.style("top",(d3.event.pageY)+"px")
-				.html("<b>You just selected a(n) "+d.Make+" car!</b> \n Please click on the link below to explore more on this car! \n <b>EngineCylinder</b>: "+d.EngineCylinders+"\n <b>Avg.City MPG</b>: "+d.AverageCityMPG+
+				.html("<b>You just selected a(n) "+d.Make+" car! </b> \n Please click on the link below to explore more on this car! \n <b>EngineCylinder</b>: "+d.EngineCylinders+"\n <b>Avg.City MPG</b>: "+d.AverageCityMPG+
 				"\n <b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"\n <b>Fuel</b>: "+d.Fuel+"\n <b>URL</b>: ");
   })
   .transition().duration(3000).delay(1000)
