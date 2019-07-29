@@ -4,8 +4,6 @@
 <head>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style>
-.chart rect {fill: steelblue; }
-.chart circle {fill: steelblue; }
 #tooltip {
 	opacity: 0;
 	position: absolute;
@@ -13,6 +11,7 @@
 	width: 60px; height: 40px;
 	background: white;
 	border: 0px;
+	}
 circle {fill: lightblue; stroke: black;}
 </style>
 </head>
@@ -21,7 +20,7 @@ circle {fill: lightblue; stroke: black;}
 <h1>Fuel Economy of Cars in 2017</h1>
 <p>How the fuel economy changes with the number of engine cylinders?</p>
 <ul></ul>
-<svg width="500" height="600">
+<svg width="300" height="500">
 
 </svg>
 
@@ -30,8 +29,8 @@ circle {fill: lightblue; stroke: black;}
 <script>
 async function init() {
 var data = await d3.csv("https://flunky.github.io/cars2017.csv");
-var x = d3.scaleLog().domain([10,150]).range([0,500]);
-var y = d3.scaleLog().domain([10,150]).range([500,0]);
+var x = d3.scaleLog().domain([10,150]).range([0,300]);
+var y = d3.scaleLog().domain([10,150]).range([400,0]);
 d3.select("svg")
   .append("g")
   .attr("transform", "translate(50,50)")
@@ -47,7 +46,7 @@ d3.select("svg")
           .tickFormat(d3.format("~s")));
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50,550)")
+  .attr("transform", "translate(50,450)")
   .call(d3.axisBottom(x)
           .tickValues([10,20,50,100])
           .tickFormat(d3.format("~s")));
