@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<script src="http://d3js.org/d3.v4.min.js"></script>
+<html>
 
+<head>
+<script src="http://d3js.org/d3.v4.min.js"></script>
 <style>
 .chart rect {fill: steelblue; }
 .chart circle {fill: steelblue; }
@@ -12,8 +14,8 @@
 	background: white;
 	border: 0px;
 </style>
+</head>
 
-<html>
 <body>
 <h1>Fuel Economy2 of Cars in 2017</h1>
 <p>I'm hosted with GitHub Pages.</p>
@@ -22,7 +24,7 @@
 </svg>
 
 <div id="tooltip"></div>
-</body>
+
 <script>
 var data = [4,8,15,16,23,42]
 
@@ -49,4 +51,6 @@ d3.select(".chart")
 	})
 	.on("mouseout", function() {tooltip.style("opacity", 0) })
 </script>
+
+</body>
 </html>
