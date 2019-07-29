@@ -31,7 +31,9 @@ var fruits = ['apple', 'mango', 'banana', 'orange'];
 var data = [80, 120, 60, 150, 200];
 var barHeight = 20;
 d3.select('ul').selectAll('li').data(fruits).enter().append('li').text(function(d) { return d; });
-var bar = d3.select('svg').selectAll('rect').data(data).enter().append('rect').attr('width', function(d) {  return d; })
+var bar = d3.select('svg')
+	.append("g").attr("transform", "translate(50,50)")
+	.selectAll('rect').data(data).enter().append('rect').attr('width', function(d) {  return d; })
 	.attr('height', barHeight - 1).attr('transform', function(d, i) { return "translate(0," + i * barHeight + ")"; });
 </script>
 
