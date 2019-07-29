@@ -43,15 +43,8 @@ var data = await d3.csv("https://flunky.github.io/cars2017.csv");
 var x = d3.scaleLog().domain([10,150]).range([0,400]);
 var y = d3.scaleLog().domain([10,150]).range([400,0]);
 var colorScale = d3.scaleOrdinal()
-	.domain(d.Fuel)
+	.domain(["Gasoline","Diesel","Electricity"])
 	.range(["green","orange","lightblue"]);
-var colorLegend = d3.legend.color()
-	.labelFormat(d3.format(".0f"))
-	.scale(colorScale)
-	.shapePadding(5)
-	.shapeWidth(50)
-	.shapeHeight(20)
-	.labelOffset(12);
 var tooltip = d3.select("#tooltip");
 var drilldown = d3.select("#drilldown");
 d3.select("svg")
@@ -134,6 +127,14 @@ d3.select("svg")
       .style("text-anchor", "middle")
       .text("AverageHighwayMPG");    
 	  
+var colorLegend = d3.legend.color()
+	.labelFormat(d3.format(".0f"))
+	.scale(colorScale)
+	.shapePadding(5)
+	.shapeWidth(50)
+	.shapeHeight(20)
+	.labelOffset(12);
+	
 d3.select("svg")
   .append("g")
   .attr("class","legend")
