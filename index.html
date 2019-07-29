@@ -42,7 +42,7 @@ async function init() {
 var data = await d3.csv("https://flunky.github.io/cars2017.csv");
 var x = d3.scaleLog().domain([10,150]).range([0,400]);
 var y = d3.scaleLog().domain([10,150]).range([400,0]);
-var colorScale = d3.scale.quantize()
+var colorScale = d3.scaleOrdinal()
 	.domain(["Gasoline","Diesel","Electricity"])
 	.range(["green","orange","lightblue"]);
 var colorLegend = d3.legend.color()
