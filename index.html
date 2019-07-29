@@ -20,7 +20,7 @@ circle {fill: lightblue; stroke: black;}
 <h1>Fuel Economy of Cars in 2017</h1>
 <p>How the fuel economy changes with the number of engine cylinders?</p>
 <ul></ul>
-<svg width="500" height="500">
+<svg width="600" height="500">
 
 </svg>
 
@@ -29,7 +29,7 @@ circle {fill: lightblue; stroke: black;}
 <script>
 async function init() {
 var data = await d3.csv("https://flunky.github.io/cars2017.csv");
-var x = d3.scaleLog().domain([10,150]).range([0,400]);
+var x = d3.scaleLog().domain([10,150]).range([0,600]);
 var y = d3.scaleLog().domain([10,150]).range([400,0]);
 var tooltip = d3.select("#tooltip");
 d3.select("svg")
@@ -43,7 +43,8 @@ d3.select("svg")
 		tooltip.style("opacity", 1)
 				.style("left",(d3.event.pageX)+"px")
 				.style("top",(d3.event.pageY)+"px")
-				.html("Item #"+i+" is "+d);
+				.html("Item# "+i+": \n EngineCylinder: "+d.EngineCylinders+"\n Avg.City MPG: "+d.AverageCityMPG+
+				"\n Avg.Hwy MPG: "+d.AverageHighwayMPG);
    })
    .on("mouseout", function() {tooltip.style("opacity", 0) });
 d3.select("svg")
