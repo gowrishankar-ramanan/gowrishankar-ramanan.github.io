@@ -28,13 +28,14 @@
 
 <script>
 var fruits = ['apple', 'mango', 'banana', 'orange'];    
-var data = [80, 120, 60, 150, 200];
-var barHeight = 20;
-d3.select('ul').selectAll('li').data(fruits).enter().append('li').text(function(d) { return d; });
-var bar = d3.select('svg')
-	.append("g").attr("transform", "translate(50,50)")
-	.selectAll('rect').data(data).enter().append('rect').attr('width', function(d) {  return d; })
-	.attr('height', barHeight - 1).attr('transform', function(d, i) { return "translate(0," + i * barHeight + ")"; });
+var data = await d3.csv("https://flunky.github.io/cars2017.csv");
+var bar = d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50,50)")
+  .selectAll("circle").data(data).enter().append("circle")
+  .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
+  .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
+  .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);});
 </script>
 
 </body>
