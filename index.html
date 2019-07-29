@@ -30,22 +30,15 @@ circle {fill: lightblue; stroke: black;}
 <script>
 async function init() {
 var data = await d3.csv("https://flunky.github.io/cars2017.csv");
-var x = d3.scaleLog().domain([10,150]).range([0,500])
-var y = d3.scaleLog().domain([10,150]).range([500,0])
+var x = d3.scaleLog().domain([10,150]).range([0,500]);
+var y = d3.scaleLog().domain([10,150]).range([500,0]);
 d3.select("svg")
   .append("g")
   .attr("transform", "translate(50,50)")
   .selectAll("circle").data(data).enter().append("circle")
   .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
   .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
-  .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
-  .on("mouseover", function(d,i) {
-		tooltip.style("opacity", 1)
-				.style("left",(d3.event.pageX)+"px")
-				.style("top",(d3.event.pageY)+"px")
-				.html("Item #"+i+" is "+d);
-	})
-   .on("mouseout", function() {tooltip.style("opacity", 0) });
+  .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);});
 d3.select("svg")
   .append("g")
   .attr("transform", "translate(50,50)")
