@@ -58,15 +58,15 @@ d3.select("svg")
 				.html("<b>Item#</b> "+i+": \n <b>EngineCylinder</b>: "+d.EngineCylinders+"\n <b>Avg.City MPG</b>: "+d.AverageCityMPG+
 				"\n <b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"\n <b>Fuel</b>: "+d.Fuel);
   })
-  .on("mouseout", function() {
+  .on("mouseout", function(d) {
 		tooltip.style("opacity", 0);
-		if(this.Fuel.valueOf()=="Gasoline") {
+		if(d.Fuel.valueOf()=="Gasoline") {
 			return "green";
 		}
-		else if (this.Fuel.valueOf()=="Diesel") {
+		else if (d.Fuel.valueOf()=="Diesel") {
 			return "orange";
 		}
-		else if (this.Fuel.valueOf()=="Electricity") {
+		else if (d.Fuel.valueOf()=="Electricity") {
 			return "lightblue";
 		}
   });
