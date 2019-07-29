@@ -8,7 +8,7 @@
 	opacity: 0;
 	position: absolute;
 	text-align: center;
-	width: 60px; height: 40px;
+	width: 150px; height: 40px;
 	background: white;
 	border: 0px;
 	}
@@ -39,6 +39,11 @@ d3.select("svg")
   .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
   .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
   .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
+  .attr("fill", function(d,i) {
+	if(d.Fuel=="Gasoline") {
+		return "Green";
+	}
+  })
   .on("mouseover", function(d,i) {
 		tooltip.style("opacity", 1)
 				.style("left",(d3.event.pageX)+"px")
