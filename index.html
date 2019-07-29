@@ -51,6 +51,7 @@ d3.select("svg")
   .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
   .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
   .attr("r", function(d,i) {return 1;})
+  .attr("data-legend",function(d) { return d.Fuel})
   .on("mouseover", function(d,i) {
 		d3.select(this).style("fill", "red");
 		tooltip.style("opacity", 1)
@@ -127,7 +128,7 @@ d3.select("svg")
 d3.select("svg")
   .append("g")
   .attr("class","legend")
-  .attr("transform", "translate(500,50)")
+  .attr("transform", "translate(50,30)")
   .style("font-size","12px")
   .call(d3.legend);
 }
