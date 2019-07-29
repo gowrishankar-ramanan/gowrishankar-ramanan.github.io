@@ -39,6 +39,11 @@ d3.select("svg")
   .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
   .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
   .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
+  .attr("fill", function(d) {
+		if(d.Fuel.valueOf()=="Gasoline") {
+			return "green";
+		}
+  })
   .on("mouseover", function(d,i) {
 		d3.select(this).style("fill", "red");
 		tooltip.style("opacity", 1)
@@ -65,17 +70,20 @@ d3.select("svg")
           .tickFormat(d3.format("~s")));
 
   // text label for the x axis
-  svg.append("text")             
+  d3.select("svg")
+      .append("text")             
       .attr("transform",
-            "translate(200, 420)")
+            "translate(" + (width/2) + " ," + 
+                           (height + margin.top + 20) + ")")
       .style("text-anchor", "middle")
       .text("AverageCityMPG");
 	  
   // text label for the y axis
-  svg.append("text")
+  d3.select("svg")
+      .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 200)
-      .attr("x",5)
+      .attr("y", 0 - margin.left)
+      .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
       .text("AverageHighwayMPG");    
