@@ -3,6 +3,7 @@
 
 <style>
 .chart rect {fill: steelblue; }
+.chart circle {fill: steelblue; }
 #tooltip {
 	opacity: 0;
 	position: absolute;
@@ -23,30 +24,30 @@
 <div id="tooltip"></div>
 
 <script>
-var x = d3.scaleLog().domain([10,150]).range([0,200])
-var y = d3.scaleLog().domain([10,150]).range([200,0])
-data = await d3.csv("https://flunky.github.io/cars2017.csv")
-d3.select("svg")
-  .append("g")
-  .attr("transform", "translate(50,50)")
-  .selectAll("circle").data(data).enter().append("circle")
-  .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
-  .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
-  .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
-d3.select("svg")
-  .append("g")
-  .attr("transform", "translate(50,50)")
-  .call(d3.axisLeft(y)
-          .tickValues([10,20,50,100])
-          .tickFormat(d3.format("~s")))
-d3.select("svg")
-  .append("g")
-  .attr("transform", "translate(50,250)")
-  .call(d3.axisBottom(x)
-          .tickValues([10,20,50,100])
-          .tickFormat(d3.format("~s")))
+var data = [4,8,15,16,23,42]
+
+var x = d3.scaleLinear().domain([0,6]).range([0,width]);
+var y = d3.scaleLinear().domain([0,42]).range([height,0]);
 
 var tooltip = d3.select("#tooltip")
+
+d3.select(".chart")
+	.attr("width", width)
+	.attr("height", height)
+	.selectAll("rect")
+	.data(data)
+	.enter().append("rect")
+	.attr("width",19)
+	.attr("height",function(d) { return height - y(d); })
+	.attr("x",function(d,i) { return x(i); })
+	.attr("y",function(d) { return y(d); })
+	.on("mouseover", function(d,i) {
+		tooltip.style("opacity", 1)
+				.style("left",(d3.event.pageX)+"px")
+				.style("top",(d3.event.pageY)+"px")
+				.html("Item #"+i+" is "+d);
+	})
+	.on("mouseout", function() {tooltip.style("opacity", 0) })
 </script>
 </body>
 </html>
