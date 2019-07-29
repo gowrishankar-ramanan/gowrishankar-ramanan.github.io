@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<script src='https://d3js.org/d3.v4.min.js'></script>
+<script src='https://d3js.org/d3.v5.min.js'></script>
 <style>
 .chart rect {fill: steelblue; }
 .chart circle {fill: steelblue; }
@@ -13,11 +13,12 @@
 	width: 60px; height: 40px;
 	background: white;
 	border: 0px;
+circle {fill: lightblue; stroke: black;}
 </style>
 </head>
 
-<body>
-<h1>Fuel Economy2 of Cars in 2017</h1>
+<body onload='init()'>
+<h1>Fuel Economy of Cars in 2017</h1>
 <p>I'm hosted with GitHub Pages.</p>
 <ul></ul>
 <svg width="300" height="500">
@@ -27,14 +28,29 @@
 <div id="tooltip"></div>
 
 <script>
-var fruits = ['apple', 'mango', 'banana', 'orange'];    
-async function loadData() {
+async function init() {
 var data = await d3.csv("https://flunky.github.io/cars2017.csv");
-var bar = d3.select("svg")
+var x = d3.scaleLog().domain([10,150]).range([0,200])
+var y = d3.scaleLog().domain([10,150]).range([200,0])
+d3.select("svg")
   .append("g")
   .attr("transform", "translate(50,50)")
   .selectAll("circle").data(data).enter().append("circle")
+  .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
+  .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
   .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50,50)")
+  .call(d3.axisLeft(y)
+          .tickValues([10,20,50,100])
+          .tickFormat(d3.format("~s")))
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50,250)")
+  .call(d3.axisBottom(x)
+          .tickValues([10,20,50,100])
+          .tickFormat(d3.format("~s")))
 }
 </script>
 
