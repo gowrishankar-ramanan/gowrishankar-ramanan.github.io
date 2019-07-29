@@ -51,7 +51,18 @@ d3.select("svg")
   .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
   .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
   .attr("r", function(d,i) {return 1;})
-  .attr("data-legend",function(d) { return d.Fuel})
+  .attr("data-legend",function(d) { return d.Fuel; })
+  .attr("data-legend-color",function(d) {  
+		if(d.Fuel.valueOf()=="Gasoline") {
+			return "green";
+		}
+		else if (d.Fuel.valueOf()=="Diesel") {
+			return "orange";
+		}
+		else if (d.Fuel.valueOf()=="Electricity") {
+			return "lightblue";
+		}
+  })
   .on("mouseover", function(d,i) {
 		d3.select(this).style("fill", "red");
 		tooltip.style("opacity", 1)
