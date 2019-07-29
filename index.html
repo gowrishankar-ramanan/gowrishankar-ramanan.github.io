@@ -55,8 +55,8 @@ d3.select("svg")
 		tooltip.style("opacity", 1)
 				.style("left",(d3.event.pageX)+"px")
 				.style("top",(d3.event.pageY)+"px")
-				.html("<b>Item#</b> "+i+": \n <b>EngineCylinder</b>: "+d.EngineCylinders+"\n <b>Avg.City MPG</b>: "+d.AverageCityMPG+
-				"\n <b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"\n <b>Fuel</b>: "+d.Fuel);
+				.html("<b>Item# "+i+"</b><br/><b>EngineCylinder</b>: "+d.EngineCylinders+"<br/><b>Avg.City MPG</b>: "+d.AverageCityMPG+
+				"<br/><b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"<br/><b>Fuel</b>: "+d.Fuel);
   })
   .on("mouseout", function(d) {
 		tooltip.style("opacity", 0);
@@ -75,8 +75,8 @@ d3.select("svg")
 		drilldown.style("opacity", 1)
 				.style("left","600px")
 				.style("top",(d3.event.pageY)+"px")
-				.html("<b>You just selected a(n) "+d.Make+" car! </b> \n Please click on the link below to explore more on this car! \n <b>EngineCylinder</b>: "+d.EngineCylinders+"\n <b>Avg.City MPG</b>: "+d.AverageCityMPG+
-				"\n <b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"\n <b>Fuel</b>: "+d.Fuel+"\n <b>URL</b>: ");
+				.html("<b>You just selected a(n) "+d.Make+" car! </b><br/>Please click on the link below to explore more on this car!<br/><b>EngineCylinder</b>: "+d.EngineCylinders+"<br/><b>Avg.City MPG</b>: "+d.AverageCityMPG+
+				"<br/><b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"<br/><b>Fuel</b>: "+d.Fuel+"<br/><b>URL</b>: ");
   })
   .transition().duration(3000).delay(1000)
   .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
