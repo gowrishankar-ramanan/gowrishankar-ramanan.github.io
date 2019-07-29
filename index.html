@@ -43,6 +43,12 @@ d3.select("svg")
 		if(d.Fuel.valueOf()=="Gasoline") {
 			return "green";
 		}
+		else if (d.Fuel.valueOf()=="Diesel") {
+			return "orange";
+		}
+		else if (d.Fuel.valueOf()=="Electricity") {
+			return "lightblue";
+		}
   })
   .on("mouseover", function(d,i) {
 		d3.select(this).style("fill", "red");
@@ -52,9 +58,17 @@ d3.select("svg")
 				.html("<b>Item#</b> "+i+": \n <b>EngineCylinder</b>: "+d.EngineCylinders+"\n <b>Avg.City MPG</b>: "+d.AverageCityMPG+
 				"\n <b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"\n <b>Fuel</b>: "+d.Fuel);
   })
-  .on("mouseout", function() {
+  .on("mouseout", function(d) {
 		tooltip.style("opacity", 0);
-		d3.select(this).style("fill", "lightblue");
+		if(this.Fuel.valueOf()=="Gasoline") {
+			return "green";
+		}
+		else if (this.Fuel.valueOf()=="Diesel") {
+			return "orange";
+		}
+		else if (this.Fuel.valueOf()=="Electricity") {
+			return "lightblue";
+		}
   });
 d3.select("svg")
   .append("g")
@@ -72,7 +86,7 @@ d3.select("svg")
   // text label for the x axis
   d3.select("svg")
       .append("g")          
-      .attr("transform", "translate(250,420)")
+      .attr("transform", "translate(250,480)")
       .append("text")
       .style("text-anchor", "middle")
       .text("AverageCityMPG");
@@ -80,7 +94,7 @@ d3.select("svg")
   // text label for the y axis
   d3.select("svg")
       .append("g")          
-      .attr("transform", "translate(30,250)")
+      .attr("transform", "translate(20,250)")
       .append("text")
       .attr("transform", "rotate(-90)")
       .style("text-anchor", "middle")
