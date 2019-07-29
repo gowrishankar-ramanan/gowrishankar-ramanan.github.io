@@ -42,6 +42,7 @@ var data = await d3.csv("https://flunky.github.io/cars2017.csv");
 var x = d3.scaleLog().domain([10,150]).range([0,400]);
 var y = d3.scaleLog().domain([10,150]).range([400,0]);
 var tooltip = d3.select("#tooltip");
+var drilldown = d3.select("#drilldown");
 d3.select("svg")
   .append("g")
   .attr("transform", "translate(50,50)")
@@ -71,7 +72,7 @@ d3.select("svg")
   })
   .on("click", function(d,i) {
 		d3.select(this).style("fill", "red");
-		tooltip.style("opacity", 1)
+		drilldown.style("opacity", 1)
 				.style("left","600px")
 				.style("top",(d3.event.pageY)+"px")
 				.html("<b>You just selected a(n) "+d.Make+" car! \nPlease click on the link below to explore more on this car!\n <b>EngineCylinder</b>: "+d.EngineCylinders+"\n <b>Avg.City MPG</b>: "+d.AverageCityMPG+
