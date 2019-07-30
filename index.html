@@ -30,7 +30,18 @@ circle {fill: lightblue; stroke: black;}
 <p color="blue"><i>Watch Chart Elements & Transitions ---> Hover for Tooltips ---> Click to Drilldown further</i></p>
 
 <svg width="800" height="500">
+<text x="65" y="25" style="font-weight: bold">Fuel Type</text>
+<rect fill="green" width="10px" height="10px" x="60" y="40"/> <text x="80" y="50"> Gasoline </text>
+<rect fill="orange" width="10px" height="10px" x="60" y="60"/> <text x="80" y="70"> Diesel </text>
+<rect fill="lightblue" width="10px" height="10px" x="60" y="80"/> <text x="80" y="90"> Electricity </text>
 
+<text x="180" y="25" style="font-weight: bold">Cylinder Size</text>
+<circle r="2px" cx="200" cy="40" style="fill: none"/> <text x="220" y="45"> 0 </text>
+<circle r="6px" cx="200" cy="60" style="fill: none"/> <text x="220" y="65"> 4 </text>
+<circle r="8px" cx="200" cy="80" style="fill: none"/> <text x="220" y="85"> 6 </text>
+<circle r="10px" cx="200" cy="100" style="fill: none"/> <text x="220" y="105"> 8 </text>
+<circle r="12px" cx="200" cy="120" style="fill: none"/> <text x="220" y="125"> 10 </text>
+<circle r="14px" cx="200" cy="140" style="fill: none"/> <text x="220" y="145"> 12 </text>
 </svg>
 
 <div id="tooltip"></div>
@@ -59,7 +70,7 @@ d3.select("svg")
 		tooltip.style("opacity", 1)
 				.style("left",(d3.event.pageX)+"px")
 				.style("top",(d3.event.pageY)+"px")
-				.html("<b>Item# "+i+"</b><br/><b>EngineCylinder</b>: "+d.EngineCylinders+"<br/><b>Avg.City MPG</b>: "+d.AverageCityMPG+
+				.html("<b><u>Item# "+i+"</u></b><br/><b>EngineCylinder</b>: "+d.EngineCylinders+"<br/><b>Avg.City MPG</b>: "+d.AverageCityMPG+
 				"<br/><b>Avg.Hwy MPG</b>: "+d.AverageHighwayMPG+"<br/><b>Fuel</b>: "+d.Fuel);
   })
   .on("mouseout", function(d) {
@@ -116,7 +127,8 @@ d3.select("svg")
       .attr("transform", "translate(250,480)")
       .append("text")
       .style("text-anchor", "middle")
-      .text("AverageCityMPG");
+	  .style("font-weight", "bold")
+      .text("Average City MPG");
 	  
   // text label for the y axis
   d3.select("svg")
@@ -125,7 +137,8 @@ d3.select("svg")
       .append("text")
       .attr("transform", "rotate(-90)")
       .style("text-anchor", "middle")
-      .text("AverageHighwayMPG");    
+	  .style("font-weight", "bold")
+      .text("Average Highway MPG");    
 	  
 var colorLegend = d3.legend
 	.scale(colorScale)
