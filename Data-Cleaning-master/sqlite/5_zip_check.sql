@@ -1,0 +1,1 @@
+SELECT zip, x, y FROM market WHERE (x != "" AND y!="") AND zip ="";

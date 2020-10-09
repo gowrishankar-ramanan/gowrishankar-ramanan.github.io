@@ -1,0 +1,27 @@
+'''
+@begin Overall_Data_Cleaning @desc Overall Workflow for farmersmarkets dataset
+@in farmersmarkets.csv @uri file://data/farmersmarkets.csv
+    
+    @begin CleanWithOpenRefine @desc Use OpenRefine to clean farmersmarkets.csv
+    @in farmersmarkets.csv @uri file://data/farmersmarkets.cv
+    @out farmersmarkets-or.csv @uri file://data/farmersmarkets-or.csv
+    @end CleanWithOpenRefine
+    
+    @begin FillWithPython @desc Use Python to fill zip
+    @in farmersmarkets-or.csv @uri file://data/farmersmarkets-or.csv
+    @out farmersmarkets-py.csv @uri file://data/farmersmarkets-py.csv
+    @end FillWithPython
+    
+    @begin IntegrityCheckWithSQLite @desc Use sqlite to check integrity
+    @in farmersmarkets-py.csv @uri file://data/farmersmarkets-py.csv
+    @out farmersmarkets-py.csv @uri file://data/farmersmarkets-py.csv
+    @end IntegrityCheckWithSQLite
+    
+    @begin CleanWithSqlite @desc Use sqlite to clean IC Violations
+    @in farmersmarkets-py.csv @uri file://data/farmersmarkets-py.csv
+    @out farmersmarkets-sql.csv @uri file://data/farmersmarkets-sql.csv
+    @end CleanWithSqlite
+    
+@out farmersmarkets-sql.csv @uri file://data/farmersmarkets-sql.csv
+@end Overall_Data_Cleaning
+'''

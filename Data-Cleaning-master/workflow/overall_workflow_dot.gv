@@ -1,0 +1,74 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=Overall_Data_Cleaning
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+CleanWithOpenRefine [shape=record rankdir=LR label="{<f0> CleanWithOpenRefine |<f1> Use OpenRefine to clean farmersmarkets.csv}"];
+FillWithPython [shape=record rankdir=LR label="{<f0> FillWithPython |<f1> Use Python to fill zip}"];
+CleanWithSqlite [shape=record rankdir=LR label="{<f0> CleanWithSqlite |<f1> Use sqlite to clean IC Violations}"];
+
+/* Style for nodes representing composite programs (sub-workflows) in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=2 fontname=Helvetica]
+
+/* Nodes representing composite programs (sub-workflows) in workflow */
+IntegrityCheckWithSQLite [shape=record rankdir=LR label="{<f0> IntegrityCheckWithSQLite |<f1> Use sqlite to check integrity}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+"farmersmarkets.csv" [shape=record rankdir=LR label="{<f0> farmersmarkets.csv |<f1> file\://data/farmersmarkets.csv}"];
+"farmersmarkets-or.csv" [shape=record rankdir=LR label="{<f0> farmersmarkets-or.csv |<f1> file\://data/farmersmarkets-or.csv}"];
+"farmersmarkets-py.csv" [shape=record rankdir=LR label="{<f0> farmersmarkets-py.csv |<f1> file\://data/farmersmarkets-py.csv}"];
+"farmersmarkets-sql.csv" [shape=record rankdir=LR label="{<f0> farmersmarkets-sql.csv |<f1> file\://data/farmersmarkets-sql.csv}"];
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+
+/* Edges representing connections between programs and channels */
+CleanWithOpenRefine -> "farmersmarkets-or.csv"
+"farmersmarkets.csv" -> CleanWithOpenRefine
+FillWithPython -> "farmersmarkets-py.csv"
+"farmersmarkets-or.csv" -> FillWithPython
+IntegrityCheckWithSQLite -> "farmersmarkets-py.csv"
+"farmersmarkets-py.csv" -> IntegrityCheckWithSQLite
+CleanWithSqlite -> "farmersmarkets-sql.csv"
+"farmersmarkets-py.csv" -> CleanWithSqlite
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+"farmersmarkets.csv_input_port" [label=""]
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+"farmersmarkets-sql.csv_output_port" [label=""]
+
+/* Edges from input ports to channels */
+"farmersmarkets.csv_input_port" -> "farmersmarkets.csv"
+
+/* Edges from channels to output ports */
+"farmersmarkets-sql.csv" -> "farmersmarkets-sql.csv_output_port"
+
+/* End of top-level graph */
+}
