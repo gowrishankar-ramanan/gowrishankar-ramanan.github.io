@@ -1,0 +1,60 @@
+CA4:
+1f (2 points):
+No. X and Y are NOT independent. P(12, 5) = 0 while P(X=12)*P(Y=5) = 1/648
+
+CA5:
+All GOOD
+
+CA6:
+See solutions for details
+1a (2pts): 	2
+1b (3pts): 	1
+2a (1pt): 	1
+2b (1pt): 	1
+2c (2pts): 	2
+2d (1pt): 	0
+3a (1pt): 	1
+3b (2pts): 	0
+3c (2pts): 	2
+4a (2pts): 	2
+4b (1pt): 	0
+4c (1pt): 	0
+4d (1pt): 	0
+5 (5pts): 	1
+Total	13
+
+CA7:
+Question	Pts Value	Pts Received 	Comments
+1a	1	1	H0: muA - muB <=0; upper-tailed test
+1b	1	1	se = 0.286; t_val = 1.99
+1c	1	1	df = 16.95 (do not round to integer)
+1d	2	2	p_val = 0.0313; reject H0
+2a	1	1	p1bar = 0.78; p2bar = 0.6
+2b	1	1	se = 0.05055
+2c	1	1	[0.081, 0.279]
+2d	1	1	se = 0.052
+2e	2	2	H0: p1-p2 <= 0; p_val = 0.00027
+3a	1	1	3.2 is the estimate of the population mean percent total return per quarter for GE
+3b	1	1	s^2 = 253.37; s = 15.92
+3c	2	2	[110.76, 1049.55]
+3d	1	1	[10.52, 32.40]
+4a	1	1	H0: sigma1^2 = sigma2^2
+4b	1	1	F=8.2844
+4c	2	1	p_val = 7.22e-6; reject H0
+Total	20	19	 
+
+CA8:
+All GOOD
+
+CA9:
+Question	pts value	pts received	comments
+a	2	2	 
+b	2	2	10.5280 + 0.9534*Weekly Usage;  For every additional hour of usage, the annual maintenance expense is expected to increase by 95.34 dollars on average.
+c	2	2	83.8% of variations in annual maintenance expense can be explained by the variations in weekly usage.
+d	2	2	 
+e	2	2	Yes, the model is significant because the p value of the model is 0.000124, which is much less than 0.01.
+f	2	2	39.13117007
+g	3	1	4.50409
+h	3	2	MOE = 10.386453 (df = 8) [28.7447170619, 49.5176230781]
+i	2	2	If the company uses the machine 30 hours per week, we are 95% confidence that the annual maintenance expense is between $2874.47 and $4951.76.
+Total	20	17	 
