@@ -1,0 +1,3 @@
+Bubble Sort (switches in the inner loop based on comparison of immediate adjacent element using a temp variable) - O(n**2) algorithm - very slow
+Merge Sort (divide the list into several equal halfs, bubble sort and then merge) - O(n log n) algorithm
+Insertion Sort (starts from first index. Each index compares with data in all previous indexes and switches) - O(n**2)
