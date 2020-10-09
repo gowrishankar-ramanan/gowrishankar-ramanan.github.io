@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "Triathlon", "Triathlon\Triathlon.dwproj", "{375E46C5-14C0-431C-B7B6-8A18B2233B5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{375E46C5-14C0-431C-B7B6-8A18B2233B5A}.Development|Default.ActiveCfg = Development
+		{375E46C5-14C0-431C-B7B6-8A18B2233B5A}.Development|Default.Build.0 = Development
+		{375E46C5-14C0-431C-B7B6-8A18B2233B5A}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CE225D2-A08D-42D7-826C-F82B08596A68}
+	EndGlobalSection
+EndGlobal
