@@ -1,0 +1,185 @@
+var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200])
+var y = d3.scaleLinear().domain([0,42]).range([200,0])
+var h = d3.scaleLinear().domain([0,42]).range([0,200])
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50,50)")
+  .selectAll("rect").data(data).enter().append("rect")
+  .attr("x", function(d,i) { return x(i); })
+  .attr("y", function(d,i) { return y(d); })
+  .attr("width", 33.3333)
+  .attr("height", function(d,i) { return h(d); })
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50,50)")
+  .call(d3.axisLeft(y))
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50,250)")
+  .call(d3.axisBottom(x))
+  
+  
+
+var pie = d3.pie()
+d3.select("svg").append("g")
+  .attr("transform", "translate(150,150)")
+  .selectAll("path")
+  .data(pie(data))
+  .enter().append("path")
+  .attr("d", arc)
+  .attr("fill", function(d,i) { return color[i]; })
+
+
+
+var x = d3.scaleLog().domain([10,150]).range([0,200])
+var y = d3.scaleLog().domain([10,150]).range([200,0])
+data = await d3.csv("https://flunky.github.io/cars2017.csv")
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50,50)")
+  .selectAll("circle").data(data).enter().append("circle")
+  .attr("cx", function(d,i) { return x(parseInt(d.AverageCityMPG,10)); })
+  .attr("cy", function(d,i) { return y(parseInt(d.AverageHighwayMPG,10)); })
+  .attr("r", function(d,i) {return 2 + parseInt(d.EngineCylinders,10);})
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50,50)")
+  .call(d3.axisLeft(y)
+          .tickValues([10,20,50,100])
+          .tickFormat(d3.format("~s")))
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50,250)")
+  .call(d3.axisBottom(x)
+          .tickValues([10,20,50,100])
+          .tickFormat(d3.format("~s")))
+
+		  
+		  
+		  
+Planar Graph:
+
+1.
+edges = [[0,1],[0,2],[1,3],[2,4],[3,5],[4,5],
+         [0,6],[1,9],[2,10],[2,14],[3,13],[3,17],[4,18],[5,21],
+         [6,7],[6,10],[7,8],[8,9],[9,13],
+         [10,11],[11,12],[11,15],[12,13],[12,16],
+         [14,15],[14,18],[15,16],[16,17],[17,21],
+         [18,19],[19,20],[20,21]]
+
+n = 22
+
+x = np.array(np.zeros(n))
+y = np.array(np.zeros(n))
+
+# insert code here to
+# compute positions
+# in arrays x and y
+# for vertex locations
+# for a radial layout
+# of the graph edges
+
+# make a simple unit circle 
+theta = np.linspace(0, 2*np.pi, n)
+x = 1 * np.cos(theta)
+y = 1 * np.sin(theta)
+
+drawgraph(x,y,edges)
+
+Incorrect Response 
+At least one vertex (x[1] = 0.9555728057861407, y[1] = 0.2947551744109042) is not in the right position on the unit circle (0.9594929736144974, 0.28173255684142967)
+
+
+
+
+2.
+edges = [[0,1],[0,2],[1,3],[2,4],[3,5],[4,5],
+         [0,6],[1,9],[2,10],[2,14],[3,13],[3,17],[4,18],[5,21],
+         [6,7],[6,10],[7,8],[8,9],[9,13],
+         [10,11],[11,12],[11,15],[12,13],[12,16],
+         [14,15],[14,18],[15,16],[16,17],[17,21],
+         [18,19],[19,20],[20,21]]
+
+n = 22
+
+deg = np.array(np.zeros(n,dtype=int))
+
+# insert code here to compute
+# the degree of vertex i and
+# store it in deg[i]
+for i in range(n):
+  deg[i] = sum(x.count(i) for x in edges)
+
+deg
+
+
+
+3.
+# edges[] has already been defined to the edge list as before
+# n already set to 22, the number of vertices
+# deg[i] already set to the degree of vertex i
+
+A = np.array(np.zeros((n,n)))
+
+# Insert code here to fill
+# the nxn matrix A with
+# the Laplacian matrix for
+# the graph represented by
+# the edge-list in array edges
+for i in range(n):
+  for j in range(n):
+    if i==j:
+      A[i,j] = 1
+    elif [i,j] in edges or [j,i] in edges:
+      A[i,j] = -1/deg[i]
+    else:
+      A[i,j] = 0
+    #A[i,j] = 1 if i==j else -1/deg[i] if ([i,j] or [j,i]) in edges else 0
+    
+A
+
+
+
+
+
+4.
+# Insert code here to
+# set the first six rows
+# of A to the first six
+# rows of an identity
+# matrix
+for k in range(6):
+  for m in range(n):
+    A[k,m] = 1 if k==m else 0
+
+bx = np.array(np.zeros(n))
+
+# set the first six
+# elements of bx to the
+# desired x coordinates
+# of the first six vertices
+bx[0] = -1
+bx[1] = 1
+bx[2] = -1
+bx[3] = 1
+bx[4] = -1
+bx[5] = 1
+
+x = np.linalg.solve(A,bx)
+
+by = np.array(np.zeros(n))
+
+# set the first six
+# elements of by to the
+# desired y coordinates
+# of the first six vertices
+by[0] = -1
+by[1] = -1
+by[2] = 0
+by[3] = 0
+by[4] = 1
+by[5] = 1
+
+y = np.linalg.solve(A,by)
+
+drawgraph(x,y,edges)
