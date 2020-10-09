@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "MovieDataProject", "MovieDataProject\MovieDataProject.dtproj", "{104039CB-B577-4BF4-A003-F40AB3ED943B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{104039CB-B577-4BF4-A003-F40AB3ED943B}.Development|Default.ActiveCfg = Development
+		{104039CB-B577-4BF4-A003-F40AB3ED943B}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {850133B7-30B4-4123-A5EE-DE62500EEB18}
+	EndGlobalSection
+EndGlobal
